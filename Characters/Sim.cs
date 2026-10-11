@@ -1,7 +1,7 @@
 ﻿
-namespace LifeSimulator.Characters;
-
 using LifeSimulator.Inventory;
+
+namespace LifeSimulator.Characters;
 
 public abstract class Sim : ISim
 {
