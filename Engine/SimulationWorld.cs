@@ -1,4 +1,5 @@
-﻿namespace LifeSimulator.Engine;
+﻿
+namespace LifeSimulator.Engine;
 
 public sealed class SimulationWorld
 {
