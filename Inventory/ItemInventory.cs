@@ -12,7 +12,7 @@ public class ItemInventory
 
     public bool RemoveItem(string itemName)
     {
-        Item item = FindItem(itemName);
+        Item? item = FindItem(itemName);
 
         if (item == null)
         {
@@ -22,7 +22,7 @@ public class ItemInventory
         return _items.Remove(item);
     }
 
-    public Item FindItem(string itemName)
+    public Item? FindItem(string itemName)
     {
         return _items.FirstOrDefault( item => item.Name.Equals(itemName,StringComparison.OrdinalIgnoreCase));
     }
