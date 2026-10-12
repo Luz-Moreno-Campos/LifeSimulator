@@ -15,11 +15,11 @@ public class Student : Sim
 
     public override string Act()
     {
-        return "Studying for exams.";
+        return "Studies for exams.";
     }
 
     public override string Speak()
     {
-        return "I'm preparing for my term exams.";
+        return "I study hard to excel in my field.";
     }
 }

@@ -5,7 +5,7 @@ public class Athlete : Sim
 {
     public Athlete(string name) : base(name)
     {
-        Health = 110;
+        Health = 85;
         Defense = 85;
         Speed = 95;
         Strength = 100;
@@ -20,6 +20,6 @@ public class Athlete : Sim
 
     public override string Speak()
     {
-        return "It's time for my workout.";
+        return "It's time to train.";
     }
 }

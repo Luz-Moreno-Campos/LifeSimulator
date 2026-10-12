@@ -5,7 +5,7 @@ public class Professional : Sim
 {
     public Professional(string name) : base(name)
     {
-        Health = 90;
+        Health = 70;
         Defense = 80;
         Speed = 50;
         Strength = 65;
