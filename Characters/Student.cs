@@ -9,7 +9,7 @@ public class Student : Sim
         Defense = 70;
         Speed = 75;
         Strength = 65;
-        Intellect = 100;
+        Intellect = 80;
         Agility = 70;
     }
 
