@@ -15,8 +15,9 @@ public class SoftwareDevelopmentDecorator : SimDecorator
 
     public override int Agility
     {
-        get { return _sim.Agility + 5; }
+        get { return _sim.Agility + 15; }
     }
+
 
     public override string Act()
     {
