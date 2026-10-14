@@ -1,10 +1,14 @@
-﻿namespace LifeSimulator
+﻿using LifeSimulator.Engine;
+
+namespace LifeSimulator
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            GameController controller = new();
+
+            controller.RunApp();
         }
     }
 }

@@ -1,10 +1,12 @@
 ﻿using LifeSimulator.Characters;
+using LifeSimulator.Inventory;
 
 namespace LifeSimulator.Decorators;
 
 public abstract class SimDecorator : ISim
 {
     protected readonly ISim _sim;
+
 
     public virtual string Name { get { return _sim.Name; } }
 
@@ -20,6 +22,7 @@ public abstract class SimDecorator : ISim
 
     public virtual int Agility { get { return _sim.Agility; } }
 
+    public virtual InventoryFacade Inventory{get { return _sim.Inventory; }}
 
     protected SimDecorator(ISim sim)
     {

@@ -1,4 +1,6 @@
 ﻿
+using LifeSimulator.Inventory;
+
 namespace LifeSimulator.Characters;
 
 public interface ISim
@@ -10,6 +12,8 @@ public interface ISim
     int Strength { get; }
     int Intellect { get; }
     int Agility { get; }
+
+    InventoryFacade Inventory { get; }
 
     string Act();
 
