@@ -230,6 +230,12 @@ public class GameController
             return;
         }
 
+        if (_currentSim.Specialization != "None")
+        {
+            Console.WriteLine("Sim already has a specialization.");
+            return;
+        }
+
         string? choice;
 
         if (_currentSim is Student)
