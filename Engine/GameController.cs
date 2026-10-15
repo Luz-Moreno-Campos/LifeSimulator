@@ -91,18 +91,34 @@ public class GameController
     }
 
 
-
+    /*
+     Although SimulationWorld exists independently as a Singleton,
+     from the player's perspective, the world  is presented as belonging 
+     to the current Sim. For this reason, world details
+     only are available after a Sim has been created.
+    */
     private void ViewWorldState()
     {
-        Console.WriteLine($"{_currentSim}'s World Details:");
+        if (_currentSim == null)
+        {
+            Console.WriteLine("Create a Sim to view their World Details.");
+            return;
+        }
+
+        Console.WriteLine($"{_currentSim.Name}'s World Details:");
         Console.WriteLine();
-        Console.WriteLine($"{_currentSim}'s Neighbourhood: {_world.NeighbourhoodName}");
+        Console.WriteLine($"{_currentSim.Name}'s Neighbourhood: {_world.NeighbourhoodName}");
         Console.WriteLine($"Current Day: {_world.CurrentDay}");
         Console.WriteLine($"Season: {_world.CurrentSeason}");
     }
 
     private void AdvanceDay()
     {
+        if (_currentSim == null)
+        {
+            Console.WriteLine("Create a Sim to advance a day in their world.");
+            return;
+        }
         _world.AdvanceDay();
 
         Console.WriteLine("A day has passed.");

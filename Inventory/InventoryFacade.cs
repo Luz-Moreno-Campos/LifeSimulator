@@ -15,7 +15,13 @@ public class InventoryFacade
         return _inventory.RemoveItem(itemName);
     }
 
-  
+
+    /*
+       Returning a boolean helps keep inventory implementation details 
+       hidden behind the InventoryFacade,which is  the goals of the Facade 
+       pattern. The controller only needs to know whether an item exists,
+       not the Item object itself.
+    */
     public bool HasItem(string itemName)
     {
         return _inventory.FindItem(itemName) != null;

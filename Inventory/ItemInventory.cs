@@ -1,6 +1,13 @@
 ﻿
 namespace LifeSimulator.Inventory;
 
+/*
+ Although this has no practical impact in this project,
+ Item and ItemInventory were marked as internal to show how a Facade
+ would hide implementation details in a multiple-project application by
+ preventing direct access to these classes.
+ 
+*/
 internal class ItemInventory
 {
     private readonly List<Item> _items = new();
