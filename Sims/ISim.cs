@@ -1,13 +1,13 @@
 ﻿
 using LifeSimulator.Inventory;
 
-namespace LifeSimulator.Characters;
+namespace LifeSimulator.Sims;
 
 public interface ISim
 {
     string Name { get; }
 
-    string CharacterType { get; }
+    string SimType { get; }
     string Specialization { get; }
     int Health { get; }
     int Defense { get; }

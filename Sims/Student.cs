@@ -1,10 +1,10 @@
 ﻿
-namespace LifeSimulator.Characters;
+namespace LifeSimulator.Sims;
 
 public class Student : Sim
 {
 
-    public override string CharacterType{ get { return "Student"; }}
+    public override string SimType{ get { return "Student"; }}
 
     public Student(string name) : base(name)
     {

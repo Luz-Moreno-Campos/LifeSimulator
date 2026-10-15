@@ -1,5 +1,4 @@
-﻿
-using LifeSimulator.Characters;
+﻿using LifeSimulator.Sims;
 
 namespace LifeSimulator.Decorators;
 

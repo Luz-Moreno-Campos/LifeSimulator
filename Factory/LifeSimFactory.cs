@@ -1,7 +1,7 @@
 ﻿
 namespace LifeSimulator.Factories;
 
-using LifeSimulator.Characters;
+using LifeSimulator.Sims;
 
 public class LifeSimFactory : ISimFactory
 {

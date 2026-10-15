@@ -1,12 +1,12 @@
 ﻿namespace LifeSimulator.Engine;
-using LifeSimulator.Characters;
+using LifeSimulator.Sims;
 using LifeSimulator.Decorators;
 using LifeSimulator.Factories;
 using LifeSimulator.Inventory;
 
 public class GameController
 {
-    private ISim? _currentCharacter;
+    private ISim? _currentSim;
 
     private readonly ISimFactory _simFactory = new LifeSimFactory();
 
@@ -18,14 +18,18 @@ public class GameController
 
         while (isRunning)
         {
+            
+
             DisplayMenu();
 
             string? choice = Console.ReadLine();
 
+            Console.Clear();
+
             switch (choice)
             {
                 case "1":
-                    CreateCharacter();
+                    CreateSim();
                     break;
 
                 case "2":
@@ -41,7 +45,7 @@ public class GameController
                     break;
 
                 case "5":
-                    ViewCharacterDetails();
+                    ViewSimDetails();
                     break;
 
                 case "6":
@@ -62,27 +66,35 @@ public class GameController
             }
 
             Console.WriteLine();
+            Console.WriteLine("Press any key to continue...");
+            Console.ReadKey();
+            Console.Clear();
         }
     }
 
     private void DisplayMenu()
     {
-        Console.WriteLine("*** LIFE SIMULATOR ***");
-        Console.WriteLine("1. Create Character");
-        Console.WriteLine("2. Assign Specialization");
-        Console.WriteLine("3. Add Item");
-        Console.WriteLine("4. Find Item");
-        Console.WriteLine("5. View Character Details");
-        Console.WriteLine("6. View World State");
+        Console.WriteLine("*** WELCOME TO LIFE SIMULATOR ***");
+        Console.WriteLine("Shape your sim and bring it to life");
+        Console.WriteLine();
+        Console.WriteLine("1. Create a Sim");
+        Console.WriteLine("2. Assign a Specialization");
+        Console.WriteLine("3. Add an Item");
+        Console.WriteLine("4. Find an Item");
+        Console.WriteLine("5. View Sim Details");
+        Console.WriteLine("6. View World Details");
         Console.WriteLine("7. Advance Day");
         Console.WriteLine("8. Exit");
+        Console.WriteLine();
         Console.Write("Select an option: ");
+       
     }
 
 
 
     private void ViewWorldState()
     {
+        Console.WriteLine($"World Details");
         Console.WriteLine($"Neighbourhood: {_world.NeighbourhoodName}");
         Console.WriteLine($"Current Day: {_world.CurrentDay}");
         Console.WriteLine($"Season: {_world.CurrentSeason}");
@@ -93,16 +105,20 @@ public class GameController
         _world.AdvanceDay();
 
         Console.WriteLine("A day has passed.");
+        Console.WriteLine();
         Console.WriteLine($"Current Day: {_world.CurrentDay}");
         Console.WriteLine($"Season: {_world.CurrentSeason}");
     }
     
-   private void CreateCharacter()
+   private void CreateSim()
     {
-        Console.Write("Enter character name: ");
+        Console.WriteLine("Create your sim:");
+        Console.WriteLine();
+        Console.Write("Enter Sim's name: ");
         string name = Console.ReadLine();
 
-        Console.WriteLine("Select character type:");
+        Console.WriteLine();
+        Console.WriteLine("Select Sim type:");
         Console.WriteLine();
         Console.WriteLine("1. Student");
         Console.WriteLine("2. Professional");
@@ -131,51 +147,54 @@ public class GameController
                 return;
         }
 
-        _currentCharacter = _simFactory.CreateSim(character, name);
+        _currentSim = _simFactory.CreateSim(character, name);
 
-        Console.WriteLine("Character created successfully.");
+        Console.WriteLine("Sim created successfully.");
     }
 
-    private void ViewCharacterDetails()
+    private void ViewSimDetails()
     {
-        if (_currentCharacter == null)
+        if (_currentSim == null)
         {
-            Console.WriteLine("No character has been created yet.");
+            Console.WriteLine("No Sim has been created yet.");
             return;
         }
 
-        _currentCharacter.PrintDetails();
+        _currentSim.PrintDetails();
     }
 
-   
+
     private void AddItem()
     {
-        if (_currentCharacter == null)
+        if (_currentSim == null)
         {
-            Console.WriteLine("No character has been created yet.");
+            Console.WriteLine("No Sim has been created yet.");
             return;
         }
-
+        Console.WriteLine("Add an item to your sim: ");
+        Console.WriteLine();
         Console.Write("Enter item name: ");
         string itemName = Console.ReadLine();
 
-        _currentCharacter.Inventory.AddItem(itemName);
+        _currentSim.Inventory.AddItem(itemName);
 
         Console.WriteLine($"{itemName} added successfully.");
     }
 
     private void FindItem()
     {
-        if (_currentCharacter == null)
+        if (_currentSim == null)
         {
-            Console.WriteLine("No character has been created yet.");
+            Console.WriteLine("No Sim has been created yet.");
             return;
         }
 
+        Console.WriteLine("Find an item:");
+        Console.WriteLine();
         Console.Write("Enter item name: ");
         string itemName = Console.ReadLine();
 
-        Item item = _currentCharacter.Inventory.FindItem(itemName);
+        Item item = _currentSim.Inventory.FindItem(itemName);
 
         if (item == null)
         {
@@ -189,17 +208,18 @@ public class GameController
 
     private void AssignSpecialization()
     {
-        if (_currentCharacter == null)
+        if (_currentSim == null)
         {
-            Console.WriteLine("No character has been created yet.");
+            Console.WriteLine("No Sim has been created yet.");
             return;
         }
 
         string? choice;
 
-        if (_currentCharacter is Student)
+        if (_currentSim is Student)
         {
-            Console.WriteLine("Select a specialization:");
+            Console.WriteLine("Select a Specialization:");
+            Console.WriteLine();
             Console.WriteLine("1. Software Development");
             Console.WriteLine("2. Business");
 
@@ -208,13 +228,13 @@ public class GameController
             switch (choice)
             {
                 case "1":
-                    _currentCharacter =
-                        new SoftwareDevelopmentDecorator(_currentCharacter);
+                    _currentSim =
+                        new SoftwareDevelopmentDecorator(_currentSim);
                     break;
 
                 case "2":
-                    _currentCharacter =
-                        new BusinessDecorator(_currentCharacter);
+                    _currentSim =
+                        new BusinessDecorator(_currentSim);
                     break;
 
                 default:
@@ -222,9 +242,10 @@ public class GameController
                     return;
             }
         }
-        else if (_currentCharacter is Professional)
+        else if (_currentSim is Professional)
         {
             Console.WriteLine("Select a specialization:");
+            Console.WriteLine();
             Console.WriteLine("1. Developer");
             Console.WriteLine("2. Project Manager");
 
@@ -233,13 +254,13 @@ public class GameController
             switch (choice)
             {
                 case "1":
-                    _currentCharacter =
-                        new DeveloperDecorator(_currentCharacter);
+                    _currentSim =
+                        new DeveloperDecorator(_currentSim);
                     break;
 
                 case "2":
-                    _currentCharacter =
-                        new ProjectManagerDecorator(_currentCharacter);
+                    _currentSim =
+                        new ProjectManagerDecorator(_currentSim);
                     break;
 
                 default:
@@ -247,9 +268,10 @@ public class GameController
                     return;
             }
         }
-        else if (_currentCharacter is Athlete)
+        else if (_currentSim is Athlete)
         {
             Console.WriteLine("Select a specialization:");
+            Console.WriteLine();
             Console.WriteLine("1. Cyclist");
             Console.WriteLine("2. Swimmer");
 
@@ -258,13 +280,13 @@ public class GameController
             switch (choice)
             {
                 case "1":
-                    _currentCharacter =
-                        new CyclistDecorator(_currentCharacter);
+                    _currentSim =
+                        new CyclistDecorator(_currentSim);
                     break;
 
                 case "2":
-                    _currentCharacter =
-                        new SwimmerDecorator(_currentCharacter);
+                    _currentSim =
+                        new SwimmerDecorator(_currentSim);
                     break;
 
                 default:

@@ -1,4 +1,4 @@
-﻿using LifeSimulator.Characters;
+﻿using LifeSimulator.Sims;
 using LifeSimulator.Inventory;
 
 namespace LifeSimulator.Decorators;
@@ -10,7 +10,7 @@ public abstract class SimDecorator : ISim
 
     public virtual string Name { get { return _sim.Name; } }
 
-    public virtual string CharacterType { get { return _sim.CharacterType; }}
+    public virtual string SimType { get { return _sim.SimType; }}
 
     public virtual string Specialization{ get { return _sim.Specialization; }}
 
@@ -46,8 +46,10 @@ public abstract class SimDecorator : ISim
 
     public virtual void PrintDetails()
     {
+        Console.WriteLine("Sim Details:");
+        Console.WriteLine();
         Console.WriteLine($"Name: {Name}");
-        Console.WriteLine($"Character: {CharacterType}");
+        Console.WriteLine($"Character: {SimType}");
         Console.WriteLine($"Specialization: {Specialization}");
         Console.WriteLine($"Health: {Health}");
         Console.WriteLine($"Defense: {Defense}");

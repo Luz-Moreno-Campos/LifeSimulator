@@ -1,13 +1,13 @@
 ﻿
 using LifeSimulator.Inventory;
 
-namespace LifeSimulator.Characters;
+namespace LifeSimulator.Sims;
 
 public abstract class Sim : ISim
 {
     public string Name { get; }
 
-    public abstract string CharacterType { get; }
+    public abstract string SimType { get; }
 
     public virtual string Specialization{ get { return "None"; }}
 
@@ -36,8 +36,10 @@ public abstract class Sim : ISim
 
     public virtual void PrintDetails()
     {
+        Console.WriteLine("Sim Details:");
+        Console.WriteLine();
         Console.WriteLine($"Name: {Name}");
-        Console.WriteLine($"Character: {CharacterType}");
+        Console.WriteLine($"Sim type: {SimType}");
         Console.WriteLine($"Specialization: {Specialization}");
         Console.WriteLine($"Health: {Health}");
         Console.WriteLine($"Defense: {Defense}");
