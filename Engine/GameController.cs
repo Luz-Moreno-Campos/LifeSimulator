@@ -94,8 +94,9 @@ public class GameController
 
     private void ViewWorldState()
     {
-        Console.WriteLine($"World Details");
-        Console.WriteLine($"Neighbourhood: {_world.NeighbourhoodName}");
+        Console.WriteLine($"{_currentSim}'s World Details:");
+        Console.WriteLine();
+        Console.WriteLine($"{_currentSim}'s Neighbourhood: {_world.NeighbourhoodName}");
         Console.WriteLine($"Current Day: {_world.CurrentDay}");
         Console.WriteLine($"Season: {_world.CurrentSeason}");
     }
@@ -160,9 +161,24 @@ public class GameController
             return;
         }
 
-        _currentSim.PrintDetails();
-    }
+        Console.WriteLine("Sim Details:");
+        Console.WriteLine();
+        Console.WriteLine($"Name: {_currentSim.Name}");
+        Console.WriteLine( $"{_currentSim.Name} says: {_currentSim.Speak()}");
+        Console.WriteLine($"Sim Type: {_currentSim.SimType}"); 
+        Console.WriteLine($"Specialization: {_currentSim.Specialization}");
+        Console.WriteLine($"{_currentSim.Name}'s professional summary: {_currentSim.Act()}");
+        Console.WriteLine($"Health: {_currentSim.Health}");
+        Console.WriteLine($"Defense: {_currentSim.Defense}");
+        Console.WriteLine($"Speed: {_currentSim.Speed}");
+        Console.WriteLine($"Strength: {_currentSim.Strength}");
+        Console.WriteLine($"Intellect: {_currentSim.Intellect}");
+        Console.WriteLine($"Agility: {_currentSim.Agility}");
 
+        Console.WriteLine("Items:");
+
+        _currentSim.Inventory.DisplayItems();
+    }
 
     private void AddItem()
     {

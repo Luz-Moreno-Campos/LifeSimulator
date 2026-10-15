@@ -22,5 +22,5 @@ public interface ISim
 
     string Speak();
 
-    void PrintDetails();
+  
 }

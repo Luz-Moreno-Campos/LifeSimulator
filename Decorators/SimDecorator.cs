@@ -44,21 +44,5 @@ public abstract class SimDecorator : ISim
         return _sim.Speak();
     }
 
-    public virtual void PrintDetails()
-    {
-        Console.WriteLine("Sim Details:");
-        Console.WriteLine();
-        Console.WriteLine($"Name: {Name}");
-        Console.WriteLine($"Character: {SimType}");
-        Console.WriteLine($"Specialization: {Specialization}");
-        Console.WriteLine($"Health: {Health}");
-        Console.WriteLine($"Defense: {Defense}");
-        Console.WriteLine($"Speed: {Speed}");
-        Console.WriteLine($"Strength: {Strength}");
-        Console.WriteLine($"Intellect: {Intellect}");
-        Console.WriteLine($"Agility: {Agility}");
-        Console.WriteLine("Items:");
-
-        Inventory.DisplayItems();
-    }
+  
 }

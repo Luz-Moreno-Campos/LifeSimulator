@@ -4,7 +4,7 @@ namespace LifeSimulator.Sims;
 public class Athlete : Sim
 {
 
-    public override string SimType { get { return "Student"; } }
+    public override string SimType { get { return "Athlete"; } }
     public Athlete(string name) : base(name)
     {
         Health = 85;
