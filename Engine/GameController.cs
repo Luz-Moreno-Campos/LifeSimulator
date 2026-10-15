@@ -210,15 +210,15 @@ public class GameController
         Console.Write("Enter item name: ");
         string itemName = Console.ReadLine();
 
-        Item item = _currentSim.Inventory.FindItem(itemName);
+        bool itemExists = _currentSim.Inventory.HasItem(itemName);
 
-        if (item == null)
+        if (!itemExists)
         {
             Console.WriteLine("Item not found.");
         }
         else
         {
-            Console.WriteLine($"{item.Name} found.");
+            Console.WriteLine($"{itemName} found.");
         }
     }
 

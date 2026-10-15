@@ -15,10 +15,12 @@ public class InventoryFacade
         return _inventory.RemoveItem(itemName);
     }
 
-    public Item? FindItem(string itemName)
+  
+    public bool HasItem(string itemName)
     {
-        return _inventory.FindItem(itemName);
+        return _inventory.FindItem(itemName) != null;
     }
+
 
     public void DisplayItems()
     {

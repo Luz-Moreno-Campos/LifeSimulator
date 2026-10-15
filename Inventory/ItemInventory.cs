@@ -1,7 +1,7 @@
 ﻿
 namespace LifeSimulator.Inventory;
 
-public class ItemInventory
+internal class ItemInventory
 {
     private readonly List<Item> _items = new();
 
