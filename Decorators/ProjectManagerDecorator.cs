@@ -4,8 +4,11 @@ namespace LifeSimulator.Decorators;
 
 public class ProjectManagerDecorator : SimDecorator
 {
-    public ProjectManagerDecorator(ISim sim) : base(sim)
+   
+
+    public override string Specialization
     {
+        get { return "Project Manager"; }
     }
 
     public override int Intellect
@@ -23,6 +26,9 @@ public class ProjectManagerDecorator : SimDecorator
         get { return _sim.Defense - 15; }
     }
 
+    public ProjectManagerDecorator(ISim sim) : base(sim)
+    {
+    }
     public override string Act()
     {
         return $"{_sim.Act()} Coordinates projects and team tasks.";

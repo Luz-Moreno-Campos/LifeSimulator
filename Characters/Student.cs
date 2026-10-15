@@ -3,6 +3,9 @@ namespace LifeSimulator.Characters;
 
 public class Student : Sim
 {
+
+    public override string CharacterType{ get { return "Student"; }}
+
     public Student(string name) : base(name)
     {
         Health = 80;
@@ -11,6 +14,7 @@ public class Student : Sim
         Strength = 65;
         Intellect = 80;
         Agility = 70;
+
     }
 
     public override string Act()

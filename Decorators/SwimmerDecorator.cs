@@ -5,10 +5,12 @@ namespace LifeSimulator.Decorators;
 
 public class SwimmerDecorator : SimDecorator
 {
-    public SwimmerDecorator(ISim sim) : base(sim)
-    {
-    }
+   
 
+    public override string Specialization
+    {
+        get { return "Swimmer"; }
+    }
     public override int Health
     {
         get { return _sim.Health + 10; }
@@ -24,6 +26,9 @@ public class SwimmerDecorator : SimDecorator
         get { return _sim.Agility + 5; }
     }
 
+    public SwimmerDecorator(ISim sim) : base(sim)
+    {
+    }
     public override string Act()
     {
         return $"{_sim.Act()} Completes intensive swim training sessions.";

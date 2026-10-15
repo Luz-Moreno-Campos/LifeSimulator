@@ -4,10 +4,12 @@ namespace LifeSimulator.Decorators;
 
 public class SoftwareDevelopmentDecorator : SimDecorator
 {
-    public SoftwareDevelopmentDecorator(ISim sim): base(sim)
-    {
-    }
+  
 
+    public override string Specialization
+    {
+        get { return "Software Development"; }
+    }
     public override int Intellect
     {
         get { return _sim.Intellect + 10; }
@@ -18,6 +20,9 @@ public class SoftwareDevelopmentDecorator : SimDecorator
         get { return _sim.Agility + 15; }
     }
 
+    public SoftwareDevelopmentDecorator(ISim sim) : base(sim)
+    {
+    }
 
     public override string Act()
     {

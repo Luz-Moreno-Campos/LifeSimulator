@@ -4,10 +4,12 @@ namespace LifeSimulator.Decorators;
 
 public class BusinessDecorator : SimDecorator
 {
-    public BusinessDecorator(ISim sim): base(sim)
-    {
-    }
+   
 
+    public override string Specialization
+    {
+        get { return "Business"; }
+    }
     public override int Intellect
     {
         get { return _sim.Intellect + 5; }
@@ -18,6 +20,9 @@ public class BusinessDecorator : SimDecorator
         get { return _sim.Defense + 10; }
     }
 
+    public BusinessDecorator(ISim sim) : base(sim)
+    {
+    }
     public override string Act()
     {
         return $"{_sim.Act()} Develops business strategies.";

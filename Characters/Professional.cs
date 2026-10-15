@@ -3,6 +3,8 @@ namespace LifeSimulator.Characters;
 
 public class Professional : Sim
 {
+
+    public override string CharacterType { get { return "Student"; } }
     public Professional(string name) : base(name)
     {
         Health = 70;

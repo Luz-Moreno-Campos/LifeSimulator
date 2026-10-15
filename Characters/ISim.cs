@@ -6,6 +6,9 @@ namespace LifeSimulator.Characters;
 public interface ISim
 {
     string Name { get; }
+
+    string CharacterType { get; }
+    string Specialization { get; }
     int Health { get; }
     int Defense { get; }
     int Speed { get; }

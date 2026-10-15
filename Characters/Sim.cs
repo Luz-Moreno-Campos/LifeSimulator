@@ -7,6 +7,10 @@ public abstract class Sim : ISim
 {
     public string Name { get; }
 
+    public abstract string CharacterType { get; }
+
+    public virtual string Specialization{ get { return "None"; }}
+
     public int Health { get; protected set; }
 
     public int Defense { get; protected set; }
@@ -33,12 +37,16 @@ public abstract class Sim : ISim
     public virtual void PrintDetails()
     {
         Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Character: {CharacterType}");
+        Console.WriteLine($"Specialization: {Specialization}");
         Console.WriteLine($"Health: {Health}");
         Console.WriteLine($"Defense: {Defense}");
         Console.WriteLine($"Speed: {Speed}");
         Console.WriteLine($"Strength: {Strength}");
         Console.WriteLine($"Intellect: {Intellect}");
         Console.WriteLine($"Agility: {Agility}");
+        Console.WriteLine($"Items:");
+        Inventory.DisplayItems();
     }
 
 }

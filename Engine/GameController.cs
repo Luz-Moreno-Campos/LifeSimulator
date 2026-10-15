@@ -67,7 +67,7 @@ public class GameController
 
     private void DisplayMenu()
     {
-        Console.WriteLine("=== LIFE SIMULATOR ===");
+        Console.WriteLine("*** LIFE SIMULATOR ***");
         Console.WriteLine("1. Create Character");
         Console.WriteLine("2. Assign Specialization");
         Console.WriteLine("3. Add Item");

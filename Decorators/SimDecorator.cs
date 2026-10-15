@@ -6,9 +6,13 @@ namespace LifeSimulator.Decorators;
 public abstract class SimDecorator : ISim
 {
     protected readonly ISim _sim;
-
+  
 
     public virtual string Name { get { return _sim.Name; } }
+
+    public virtual string CharacterType { get { return _sim.CharacterType; }}
+
+    public virtual string Specialization{ get { return _sim.Specialization; }}
 
     public virtual int Health { get { return _sim.Health; } }
 
@@ -42,6 +46,17 @@ public abstract class SimDecorator : ISim
 
     public virtual void PrintDetails()
     {
-        _sim.PrintDetails();
+        Console.WriteLine($"Name: {Name}");
+        Console.WriteLine($"Character: {CharacterType}");
+        Console.WriteLine($"Specialization: {Specialization}");
+        Console.WriteLine($"Health: {Health}");
+        Console.WriteLine($"Defense: {Defense}");
+        Console.WriteLine($"Speed: {Speed}");
+        Console.WriteLine($"Strength: {Strength}");
+        Console.WriteLine($"Intellect: {Intellect}");
+        Console.WriteLine($"Agility: {Agility}");
+        Console.WriteLine("Items:");
+
+        Inventory.DisplayItems();
     }
 }
